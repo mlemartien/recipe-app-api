@@ -1,5 +1,5 @@
 FROM python:3.7-alpine
-LABEL Maintainer="imrim S.A."
+LABEL Maintainer="imrim S.A." Author="Jacques Clément"
 
 # Recommended that for Python, Docker should not buffer the output but rather put it out as it comes
 ENV PYTHONUNBUFFERED 1

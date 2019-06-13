@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  app:
+    # Use the current directory and therefore when something changes, it automatically update the container
+    build:
+      context: .
+
+    # Port mapping outside to inside the container
+    ports:
+      - "8000:8000"
+
+    # Same for the volumes
+    volumes:
+      - ./app:/app
+
+    # Run the Django server on this machine (container), port 8000
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+    
+    
