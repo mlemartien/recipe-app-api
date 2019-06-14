@@ -1,0 +1,22 @@
+# Language our project will be using
+language: python
+
+# Version of python we need to use
+# Note that this is really important in the context of this project because we'll be
+# running our own Python inside the container and this is info is specified in 
+# the Docker Compose file. As of 14.6.19, Travis supports Python 3.6
+python:
+  - "3.6"
+
+# The services we need in Travis
+services:
+  - docker
+
+# What Travis needs to do before the job, in this case we need docker-compose installed so we can execute our application
+before_script: pip install docker-compose
+
+# The idea is that every time we're gonna push a change to GitHub, we'll run a docker container that will execute the tests AND the linter (flake8)
+# This will exit with a return code that will be used to decide on whether we continue with the flow or not
+# Note that "flake8" must be added to our Python requirements
+script: 
+  - docker-compose run app sh -c "python manage.py test && flake8"
