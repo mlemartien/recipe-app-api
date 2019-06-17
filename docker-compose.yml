@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    # Use the current directory and therefore when something changes, it automatically update the container
+    # Use the current directory to find out how to build the container (using the Dockerfile in this directory)
     build:
       context: .
 
