@@ -17,5 +17,27 @@ services:
     # Run the Django server on this machine (container), port 8000
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+
+    # ENV variables for the app
+    environment:
+      - DB_HOST=db
+      - DB_NAME=app
+      - DB_USER=postgres
+      - DB_PASS=supersecretpassword
     
+    # Make sure db is started first
+    depends_on:
+      - db
+
+  db:
+    # The image to start with
+    image: postgres:10-alpine
+
+    # Variables expected by the Postgres docker image
+    # In a true environment, you would expect Travis or Jenkins to set this variable during build
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=supersecretpassword
+
     
