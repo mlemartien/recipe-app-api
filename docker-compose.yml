@@ -35,6 +35,9 @@ services:
     # The image to start with
     image: postgres:10-alpine
 
+    ports:
+      - "5432:5432"
+
     # Variables expected by the Postgres docker image
     # In a true environment, you would expect Travis or Jenkins to set this variable during build
     environment:
