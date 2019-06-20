@@ -1,4 +1,4 @@
-# Language our project will be using
+# Language our (Travis) project will be using
 language: python
 
 # Version of python we need to use
